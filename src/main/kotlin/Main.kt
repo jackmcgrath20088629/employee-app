@@ -12,19 +12,19 @@ fun printPayslip(){
     println ("|   Monthly Payslip                                       |")
     println ("|_________________________________________________________|")
     println ("|                                                         |")
-    println ("|   Employee Name:  " + firstName.uppercase() + " " + surname.uppercase() + "(" + gender.uppercase() + ")   Employee ID: " + employeeID + "    |")
+    println ("|   Employee Name:  ${firstName.uppercase()} ${surname.uppercase()} (${gender.uppercase()}) Employee ID: $employeeID   |")
     println ("|                                                         |")
     println ("|_________________________________________________________|")
     println ("|                                                         |")
     println ("|   Payment Details \t\t\t\t Deduction Detail  \t\t\t\t  |")
     println ("|_________________________________________________________|")
-    println ("|   Salary: " + monthlySalary + "\t\t PAYE: " + monthlyPaye + "\t\t\t|")
-    println ("|   Bonus:  " + (annualBonus / 12) + "\t\t\t\t PRSI: " + monthlyPrsi  + "\t\t\t|")
-    println ("|    \t\t\t\t\t\t\t\t Cycle To Work: " + cycleToWorkMonthlyDeduction  + "\t\t\t\t|")
+    println ("|   Salary: $monthlySalary \t\t\t\t PAYE: $monthlyPaye \t\t\t\t\t\t|")
+    println ("|   Bonus:  ${roundTwoDecimals(annualBonus/12)} \t\t\t\t PRSI: $monthlyPrsi  \t\t\t\t\t\t|")
+    println ("|    \t\t\t\t\t\t\t\t Cycle To Work: $cycleToWorkMonthlyDeduction \t\t\t\t|")
     println ("|_________________________________________________________|")
-    println ("|   Gross:  " + grossPay + " \t\tTotal Deductions: " + totalDeductions + " |")
+    println ("|   Gross: $grossPay \t\t\t\tTotal Deductions: $totalDeductions \t\t\t|")
     println ("|_________________________________________________________|")
-    println ("|   \t\t\t\t Net Pay:" + (grossPay - totalDeductions) + " \t\t\t\t\t\t\t|")
+    println ("|   \t\t\t\t\t\t Net pay: ${roundTwoDecimals(grossPay - totalDeductions)}  \t\t\t\t\t\t\t|")
     println ("|_________________________________________________________|")
 
     val monthlySalary = (grossSalary/12)
@@ -35,7 +35,7 @@ fun printPayslip(){
 
 }
 
-fun printPayslipsWithRounding(){
+/*fun printPayslipsWithRounding(){
     println ("___________________________________________________________")
     println ("|   Monthly Payslip                                       |")
     println ("|_________________________________________________________|")
@@ -62,7 +62,7 @@ fun printPayslipsWithRounding(){
     val totalDeductions = (monthlyPrsi + monthlyPrsi + cycleToWorkMonthlyDeduction)
 
 }
-
+*/
 
 val firstName = "Joe"
 val surname = "Soap"
