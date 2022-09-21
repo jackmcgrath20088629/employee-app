@@ -1,3 +1,4 @@
+import kotlin.math.round
 fun main(args: Array<String>) {
     println("Pay Slip Printer")
     printPayslip()
@@ -6,7 +7,7 @@ fun main(args: Array<String>) {
 
 }
 
-kotlin.math.round
+
 fun printPayslip(){
 
     println ("___________________________________________________________")
@@ -36,6 +37,7 @@ fun printPayslip(){
 
 }
 
+fun roundTwoDecimals(number: Double) = round(number * 100) / 100
 
 val firstName = "Joe"
 val surname = "Soap"
