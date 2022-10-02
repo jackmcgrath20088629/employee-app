@@ -2,21 +2,21 @@ package ie.setu
 
 import kotlin.math.round
 
-val firstName = "Joe"
-val surname = "Soap"
+val firstName = "Malcolm"
+val surname = "White"
 val gender = 'm'
-val employeeID = 6143
-val grossSalary = 67543.21
-val payePercentage = 38.5
-val prsiPercentage = 5.2
-val annualBonus = 1450.50
-val cycleToWorkMonthlyDeduction = 54.33
+val employeeID = 5559
+val grossSalary = 22389.34
+val payePercentage = 23.5
+val prsiPercentage = 8.1
+val annualBonus = 15010.60
+val cycleToWorkMonthlyDeduction = 504.35
 
 fun main(args: Array<String>){
 
     var input : Int
 
-    do {
+    do {1
         input = menu()
         when(input) {
             1 -> println("Monthly Salary: ${getMonthlySalary()}")
@@ -34,16 +34,16 @@ fun main(args: Array<String>){
 }
 fun menu() : Int {
     print("""
-         Employee Menu for ${getFullName()}
-           1. Monthly Salary
-           2. Monthly PRSI
-           3. Monthly PAYE
-           4. Monthly Gross Pay
-           5. Monthly Total Deductions
-           6. Monthly Net Pay
-           7. Full Payslip
-          -1. Exit
-         Enter Option : """)
+         ¦ Employee Menu for ${getFullName()}
+         ¦ 1. Monthly Salary
+         ¦ 2. Monthly PRSI
+         ¦ 3. Monthly PAYE
+         ¦ 4. Monthly Gross Pay
+         ¦ 5. Monthly Total Deductions
+         ¦ 6. Monthly Net Pay
+         ¦ 7. Full Payslip
+         ¦-1. Exit
+         ¦ Enter Option : """)
     return readLine()!!.toInt()
 }
 
