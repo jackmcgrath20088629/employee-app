@@ -62,48 +62,6 @@ fun menu() : Int {
     return readLine()!!.toInt()
 }
 
-fun getFullName() = when (employee.gender){
-    'm', 'M' -> "Mr. ${employee.firstName} ${employee.surname}"
-    'f', 'F' -> "Ms.  ${employee.firstName} ${employee.surname}"
-    else ->  "${employee.firstName} ${employee.surname}"
-}
-
-
-fun getMonthlySalary() = roundTwoDecimals(grossSalary / 12)
-fun getMonthlyPRSI() = roundTwoDecimals(getMonthlySalary() * (prsiPercentage / 100))
-fun getMonthlyPAYE() = roundTwoDecimals(getMonthlySalary() * (payePercentage / 100))
-fun getGrossMonthlyPay() = roundTwoDecimals(getMonthlySalary() + (annualBonus / 12))
-fun getTotalMonthlyDeductions() = roundTwoDecimals((getMonthlyPRSI() + getMonthlyPAYE() + cycleToWorkMonthlyDeduction))
-fun getNetMonthlyPay() = roundTwoDecimals(roundTwoDecimals(getGrossMonthlyPay() - getTotalMonthlyDeductions()))
-
-fun getPayslip() {
-
-    val monthlySalary = roundTwoDecimals(grossSalary / 12)
-    val monthlyPrsi = roundTwoDecimals(monthlySalary * (prsiPercentage / 100))
-    val monthlyPaye = roundTwoDecimals(monthlySalary * (payePercentage / 100))
-    val grossPay = roundTwoDecimals(monthlySalary + (annualBonus / 12))
-    val totalDeductions = roundTwoDecimals((monthlyPrsi + monthlyPrsi + cycleToWorkMonthlyDeduction))
-
-    println(
-        """
-        ______________________________________________________________________
-         Monthly Payslip:             ${firstName.uppercase()} ${surname.uppercase()} (${gender.uppercase()}), ID: $employeeID                  
-        ______________________________________________________________________    
-         Pay Details (gross pay: $grossPay)                                                                    
-        ______________________________________________________________________
-         Salary: $monthlySalary
-         Bonus:  ${roundTwoDecimals(annualBonus / 12)}            
-        ______________________________________________________________________
-         Deduction Details (total Deductions: $totalDeductions)      
-        ______________________________________________________________________
-         PAYE: $monthlyPaye                
-         PRSI: $monthlyPrsi  
-         Cycle To Work: $cycleToWorkMonthlyDeduction         
-        ______________________________________________________________________
-         Net pay: ${roundTwoDecimals(grossPay - totalDeductions)} 
-        ______________________________________________________________________"""
-    )
-}
 
 fun roundTwoDecimals(number: Double) = round(number * 100) / 100
 //fun roundTwoDecimals(number: Double) = "%.2f".format(number).toDouble()
