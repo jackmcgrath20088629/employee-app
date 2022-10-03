@@ -2,17 +2,32 @@ package ie.setu
 
 import kotlin.math.round
 
-val firstName = "Malcolm"
-val surname = "White"
-val gender = 'm'
-val employeeID = 5550
-val grossSalary = 22389.34
-val payePercentage = 23.5
-val prsiPercentage = 8.1
-val annualBonus = 15010.60
-val cycleToWorkMonthlyDeduction = 504.35
+var employee =  Employee("Malcolm", "White", 'm', 7777, 20189.21, 38.5, 3.7, 17800.50, 87.33)
 
 fun main(args: Array<String>){
+
+    fun add()){
+        print("Enter first name: ")
+        val firstName = readLine().toString()
+        print("Enter surname: ")
+        val surname = readLine().toString()
+        print("Enter gender (m/f): ")
+        val gender = readLine()!!.toCharArray()[0]
+        print("Enter employee ID: ")
+        val employeeID = readLine()!!.toInt()
+        print("Enter gross salary: ")
+        val grossSalary = readLine()!!.toDouble()
+        print("Enter PAYE %: ")
+        val payePercentage = readLine()!!.toDouble()
+        print("Enter PRSI %: ")
+        val prsiPercentage = readLine()!!.toDouble()
+        print("Enter Annual Bonus: ")
+        val annualBonus= readLine()!!.toDouble()
+        print("Enter Cycle to Work Deduction: ")
+        val cycleToWorkMonthlyDeduction= readLine()!!.toDouble()
+
+        employee = Employee(firstName, surname, gender, employeeID, grossSalary, payePercentage, prsiPercentage, annualBonus, cycleToWorkMonthlyDeduction)
+    }
 
     var input : Int
 
@@ -47,14 +62,12 @@ fun menu() : Int {
     return readLine()!!.toInt()
 }
 
-fun getFullName() = when (gender){
-
-    'm', 'M' -> "Mr. $firstName $surname"
-
-    'f', 'F' -> "Ms. $firstName $surname"
-
-    else -> "$firstName $surname"
+fun getFullName() = when (employee.gender){
+    'm', 'M' -> "Mr. ${employee.firstName} ${employee.surname}"
+    'f', 'F' -> "Ms.  ${employee.firstName} ${employee.surname}"
+    else ->  "${employee.firstName} ${employee.surname}"
 }
+
 
 fun getMonthlySalary() = roundTwoDecimals(grossSalary / 12)
 fun getMonthlyPRSI() = roundTwoDecimals(getMonthlySalary() * (prsiPercentage / 100))
