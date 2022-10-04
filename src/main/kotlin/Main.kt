@@ -1,9 +1,14 @@
 package ie.setu
 
+import ie.setu.models.Employee
+import ie.setu.controllers.EmployeeAPI
+import mu.KotlinLogging
 import kotlin.math.round
 
 var employees = EmployeeAPI()
+val logger = KotlinLogging.logger {}
 fun main(args: Array<String>){
+    logger.info { "Launching Employee App" }
     start()
 }
 

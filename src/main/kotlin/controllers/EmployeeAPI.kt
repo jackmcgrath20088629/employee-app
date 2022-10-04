@@ -1,4 +1,4 @@
-package ie.setu
+package controllers
 
 var lastId = 0
 
