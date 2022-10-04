@@ -6,15 +6,13 @@ var employee =  Employee("Malcolm", "White", 'm', 7777, 20189.21, 38.5, 3.7, 178
 
 fun main(args: Array<String>){
 
-    fun add()){
+    fun add(){
         print("Enter first name: ")
         val firstName = readLine().toString()
         print("Enter surname: ")
         val surname = readLine().toString()
         print("Enter gender (m/f): ")
         val gender = readLine()!!.toCharArray()[0]
-        print("Enter employee ID: ")
-        val employeeID = readLine()!!.toInt()
         print("Enter gross salary: ")
         val grossSalary = readLine()!!.toDouble()
         print("Enter PAYE %: ")
@@ -27,7 +25,7 @@ fun main(args: Array<String>){
         val cycleToWorkMonthlyDeduction= readLine()!!.toDouble()
 
         employee = Employee(firstName, surname, gender, employeeID, grossSalary, payePercentage, prsiPercentage, annualBonus, cycleToWorkMonthlyDeduction)
-    }
+        }
 
     var input : Int
 
@@ -48,20 +46,17 @@ fun main(args: Array<String>){
     } while (input != -1)
 }
 fun menu() : Int {
-    print("""
-         ¦ Employee Menu for ${getFullName()}
-         ¦ 1. Monthly Salary
-         ¦ 2. Monthly PRSI
-         ¦ 3. Monthly PAYE
-         ¦ 4. Monthly Gross Pay
-         ¦ 5. Monthly Total Deductions
-         ¦ 6. Monthly Net Pay
-         ¦ 7. Full Payslip
-         ¦-1. Exit
-         ¦ Enter Option : """)
+    print(""" 
+         |Employee Menu
+         |1. Add Employee
+         |2. List All Employees
+         |3. Search Employees 
+         |4. Print Payslip for Employee
+         |-1. Exit
+         |       
+         |Enter Option : """.trimMargin())
     return readLine()!!.toInt()
 }
-
 
 fun roundTwoDecimals(number: Double) = round(number * 100) / 100
 //fun roundTwoDecimals(number: Double) = "%.2f".format(number).toDouble()
