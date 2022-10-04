@@ -2,9 +2,10 @@ package ie.setu
 
 import kotlin.math.round
 
-var employee =  Employee("Malcolm", "White", 'm', 7777, 20189.21, 38.5, 3.7, 17800.50, 87.33)
-
+var employees = EmployeeAPI()
 fun main(args: Array<String>){
+    start()
+}
 
     fun add(){
         print("Enter first name: ")
@@ -24,27 +25,16 @@ fun main(args: Array<String>){
         print("Enter Cycle to Work Deduction: ")
         val cycleToWorkMonthlyDeduction= readLine()!!.toDouble()
 
-        employee = Employee(firstName, surname, gender, employeeID, grossSalary, payePercentage, prsiPercentage, annualBonus, cycleToWorkMonthlyDeduction)
-        }
+        employees.create(Employee(firstName, surname, gender, 0, grossSalary, payePercentage, prsiPercentage, annualBonus, cycleToWorkMonthlyDeduction))
+    }
+fun list(){
+    employees.findAll()
+        .forEach{ println(it) }
+}
 
     var input : Int
 
-    do {1
-        input = menu()
-        when(input) {
-            1 -> println("Monthly Salary: ${getMonthlySalary()}")
-            2 -> println("Monthly PRSI: ${getMonthlyPRSI()}")
-            3 ->println("Monthly PAYE: ${getMonthlyPAYE()}")
-            4 -> println("Monthly Gross Pay: ${getGrossMonthlyPay()}")
-            5 -> println("Monthly Total Deductions: ${getTotalMonthlyDeductions()}")
-            6 -> println("Monthly Net Pay: ${getNetMonthlyPay()}")
-            7 -> println(getPayslip())
-            -1 -> println("Exiting App")
-            else -> println("Invalid Option")
-        }
-        println()
-    } while (input != -1)
-}
+
 fun menu() : Int {
     print(""" 
          |Employee Menu
@@ -57,6 +47,51 @@ fun menu() : Int {
          |Enter Option : """.trimMargin())
     return readLine()!!.toInt()
 }
+
+fun start() {
+    var input: Int
+
+    do {
+        input = menu()
+        when (input) {
+            1 -> add()
+            2 -> list()
+            3 -> search()
+            4 -> paySlip()
+            -99 -> dummyData()
+            -1 -> println("Exiting App")
+            else -> println("Invalid Option")
+        }
+        println()
+    } while (input != -1)
+}
+fun list(){
+    println(employees.findAll())
+}
+fun search() {
+    val employee = getEmployeeById()
+    if (employee == null)
+        println("No employee found")
+    else
+        println(employee)
+}
+internal fun getEmployeeById(): Employee? {
+    print("Enter the employee id to search by: ")
+    val employeeID = readLine()!!.toInt()
+    return employees.findOne(employeeID)
+}
+fun paySlip(){
+    val employee = getEmployeeById()
+    if (employee != null)
+        println(employee.getPayslip())
+}
+
+fun dummyData() {
+    employees.create(Employee("Jeff", "Bing", 'm', 0, 35645.43, 31.0, 7.5, 2000.0, 25.6))
+    employees.create(Employee("Steve", "Smith", 'm', 9, 57855.13, 39.5, 7.0, 1500.0, 55.3))
+    employees.create(Employee("Lisa", "Harp", 'f', 8, 95985.41, 30.0, 8.5, 4500.0, 0.0))
+}
+
 
 fun roundTwoDecimals(number: Double) = round(number * 100) / 100
 //fun roundTwoDecimals(number: Double) = "%.2f".format(number).toDouble()
