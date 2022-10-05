@@ -1,7 +1,6 @@
-package ie.setu
 
-import ie.setu.models.Employee
-import ie.setu.controllers.EmployeeAPI
+import models.Employee
+import controllers.EmployeeAPI
 import mu.KotlinLogging
 import kotlin.math.round
 
@@ -34,10 +33,10 @@ fun main(args: Array<String>){
     }
 fun list(){
     employees.findAll()
-        .forEach{ println(it) }
+        .forEach{ println(it.toString()) }
 }
 
-    var input : Int
+    var input : Int = 0
 
 
 fun menu() : Int {
@@ -70,9 +69,7 @@ fun start() {
         println()
     } while (input != -1)
 }
-fun list(){
-    println(employees.findAll())
-}
+
 fun search() {
     val employee = getEmployeeById()
     if (employee == null)
@@ -98,7 +95,6 @@ fun dummyData() {
 }
 
 
-fun roundTwoDecimals(number: Double) = round(number * 100) / 100
 //fun roundTwoDecimals(number: Double) = "%.2f".format(number).toDouble()
 
 
