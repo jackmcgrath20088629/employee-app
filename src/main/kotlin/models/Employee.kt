@@ -1,5 +1,6 @@
 package models
-
+import com.github.ajalt.mordant.rendering.TextColors.*
+import com.github.ajalt.mordant.rendering.TextStyles.*
 import java.lang.Math.round
 
 fun roundTwoDecimals(number: Double) = round(number * 100) / 100
@@ -28,23 +29,24 @@ class Employee(var firstName: String, var surname: String, var gender: Char, var
 
         return(
             """
-        ______________________________________________________________________
-         Monthly Payslip:             ${getFullName()}, EmployeeID: ${employeeID}                 
-        ______________________________________________________________________    
-         Pay Details :) (gross pay: ${getGrossMonthlyPay()})                                                                    
-        ______________________________________________________________________
-         Salary: ${getMonthlySalary()}
-         Bonus:  ${roundTwoDecimals(annualBonus / 12)}            
-        ______________________________________________________________________
-         Deduction Details :( (total Deductions: ${getTotalMonthlyDeductions()})      
-        ______________________________________________________________________
-         PAYE: ${getMonthlyPAYE()}               
-         PRSI: ${getMonthlyPRSI()} 
-         Cycle To Work: ${cycleToWorkMonthlyDeduction}        
-        ______________________________________________________________________
-         Net pay: ${getNetMonthlyPay()} 
-        ______________________________________________________________________"""
-        )
+        ${red("______________________________________________________________________")}
+        ${green("Monthly Payslip:             ${getFullName()} , EmployeeID: ${employeeID}")}
+        ${red("______________________________________________________________________")}
+        ${green("Pay Details :) (gross pay: ${getGrossMonthlyPay()})")}
+        ${red("______________________________________________________________________")}
+        ${green("Salary: ${getMonthlySalary()}")}
+        ${green("Bonus:  ${roundTwoDecimals(annualBonus / 12)}")}
+        ${red("______________________________________________________________________")}
+        ${green("Deduction Details :( (total Deductions: ${getTotalMonthlyDeductions()})")}
+        ${red("______________________________________________________________________")}
+        ${green("PAYE: ${getMonthlyPAYE()}")}
+        ${green("PRSI: ${getMonthlyPRSI()}")}
+        ${green("Cycle To Work: ${cycleToWorkMonthlyDeduction}")}
+        ${red("______________________________________________________________________")}
+        ${green(" Net pay: ${getNetMonthlyPay()}")}
+        ${red("______________________________________________________________________")}
+                
+""")
     }
 
     override fun toString(): String {

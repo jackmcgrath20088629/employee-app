@@ -3,6 +3,8 @@ import models.Employee
 import controllers.EmployeeAPI
 import mu.KotlinLogging
 import kotlin.math.round
+import com.github.ajalt.mordant.rendering.TextColors.*
+import com.github.ajalt.mordant.rendering.TextStyles.*
 
 var employees = EmployeeAPI()
 val logger = KotlinLogging.logger {}
@@ -36,19 +38,20 @@ fun list(){
         .forEach{ println(it.toString()) }
 }
 
+
     var input : Int = 0
 
 
 fun menu() : Int {
-    print(""" 
+    print(blue(""" 
          |Employee Menu
          |1. Add Employee
          |2. List All Employees
          |3. Search Employees 
          |4. Print Payslip for Employee
-         |-1. Exit
+         |0. Exit
          |       
-         |Enter Option : """.trimMargin())
+         |Enter Option : """.trimMargin()))
     return readLine()!!.toInt()
 }
 
@@ -63,7 +66,7 @@ fun start() {
             3 -> search()
             4 -> paySlip()
             -99 -> dummyData()
-            -1 -> println("Exiting App")
+            0 -> println("Exiting App")
             else -> println("Invalid Option")
         }
         println()
@@ -73,12 +76,12 @@ fun start() {
 fun search() {
     val employee = getEmployeeById()
     if (employee == null)
-        println("No employee found")
+        println("They got fired :(")
     else
         println(employee)
 }
 internal fun getEmployeeById(): Employee? {
-    print("Enter the employee id to search by: ")
+    print("Enter the employee ID to search by: ")
     val employeeID = readLine()!!.toInt()
     return employees.findOne(employeeID)
 }
@@ -90,8 +93,8 @@ fun paySlip(){
 
 fun dummyData() {
     employees.create(Employee("Jeff", "Bing", 'm', 0, 35645.43, 31.0, 7.5, 2000.0, 25.6))
-    employees.create(Employee("Steve", "Smith", 'm', 9, 57855.13, 39.5, 7.0, 1500.0, 55.3))
-    employees.create(Employee("Lisa", "Harp", 'f', 8, 95985.41, 30.0, 8.5, 4500.0, 0.0))
+    employees.create(Employee("Steve", "Smith", 'm', 1, 57855.13, 39.5, 7.0, 1500.0, 55.3))
+    employees.create(Employee("Lisa", "Harp", 'f', 2, 95985.41, 30.0, 8.5, 4500.0, 0.0))
 }
 
 
