@@ -10,4 +10,5 @@ A simple app that reads off an employees payslip, ***through the use of a menu**
 - Easy to read details
 - Calculations done in app
 
-## 
+## Extras
+- Changed the colors of the payslip and the menu using added extra functionality not from labs, with reference.
