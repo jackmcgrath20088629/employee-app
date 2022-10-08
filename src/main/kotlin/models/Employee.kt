@@ -1,4 +1,5 @@
 package models
+//https://github.com/ajalt/mordant <---- reference for the colors in the console
 import com.github.ajalt.mordant.rendering.TextColors.*
 import com.github.ajalt.mordant.rendering.TextStyles.*
 import java.lang.Math.round
@@ -26,7 +27,7 @@ class Employee(var firstName: String, var surname: String, var gender: Char, var
 
     fun getPayslip() :String {
 
-
+//The colors alternate between red and green for the lines and actual text of the payslip
         return(
             """
         ${red("______________________________________________________________________")}
@@ -45,7 +46,6 @@ class Employee(var firstName: String, var surname: String, var gender: Char, var
         ${red("______________________________________________________________________")}
         ${green(" Net pay: ${getNetMonthlyPay()}")}
         ${red("______________________________________________________________________")}
-                
 """)
     }
 

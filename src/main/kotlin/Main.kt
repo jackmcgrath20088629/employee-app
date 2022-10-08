@@ -3,6 +3,7 @@ import models.Employee
 import controllers.EmployeeAPI
 import mu.KotlinLogging
 import kotlin.math.round
+//https://github.com/ajalt/mordant <--- reference for the colors in the console
 import com.github.ajalt.mordant.rendering.TextColors.*
 import com.github.ajalt.mordant.rendering.TextStyles.*
 
@@ -41,7 +42,7 @@ fun list(){
 
     var input : Int = 0
 
-
+//The "blue" after print sets the text color to blue for the menu
 fun menu() : Int {
     print(blue(""" 
          |Employee Menu
@@ -85,6 +86,8 @@ internal fun getEmployeeById(): Employee? {
     val employeeID = readLine()!!.toInt()
     return employees.findOne(employeeID)
 }
+
+
 fun paySlip(){
     val employee = getEmployeeById()
     if (employee != null)
